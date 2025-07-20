@@ -9,10 +9,10 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Welcome to Aspire
+              Welcome to AfriVate
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-              The future of secure payments and financial innovation. Join thousands of users who trust Aspire for their financial needs.
+              The future of secure payments and financial innovation. Join thousands of users who trust AfriVate for their financial needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -37,7 +37,7 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose Aspire?
+              Why Choose AfriVate?
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Experience the next generation of financial services with cutting-edge technology and unparalleled security.
@@ -85,7 +85,7 @@ const LandingPage = () => {
             Join Thousands of Users
           </h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Start your journey with Aspire today and experience the future of financial services.
+            Start your journey with AfriVate today and experience the future of financial services.
           </p>
           <Link
             to="/kyc-form"
@@ -101,7 +101,7 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">Aspire</h3>
+              <h3 className="text-xl font-bold mb-4">AfriVate</h3>
               <p className="text-gray-400">
                 Leading the future of secure payments and financial innovation.
               </p>
@@ -146,7 +146,7 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Aspire. All rights reserved.</p>
+            <p>&copy; 2024 AfriVate. All rights reserved.</p>
           </div>
         </div>
       </footer>
