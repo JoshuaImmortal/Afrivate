@@ -1,15 +1,27 @@
 {
   "files": {
     "main.css": "/Aspire-Project/static/css/main.93065f12.css",
+<<<<<<< HEAD
     "main.js": "/Aspire-Project/static/js/main.c9e1f45b.js",
     "static/js/453.fa09307d.chunk.js": "/Aspire-Project/static/js/453.fa09307d.chunk.js",
     "index.html": "/Aspire-Project/index.html",
     "main.93065f12.css.map": "/Aspire-Project/static/css/main.93065f12.css.map",
     "main.c9e1f45b.js.map": "/Aspire-Project/static/js/main.c9e1f45b.js.map",
+=======
+    "main.js": "/Aspire-Project/static/js/main.8dd83cea.js",
+    "static/js/453.fa09307d.chunk.js": "/Aspire-Project/static/js/453.fa09307d.chunk.js",
+    "index.html": "/Aspire-Project/index.html",
+    "main.93065f12.css.map": "/Aspire-Project/static/css/main.93065f12.css.map",
+    "main.8dd83cea.js.map": "/Aspire-Project/static/js/main.8dd83cea.js.map",
+>>>>>>> e9446e2fee3c8a82235c799c66980863f78aeda3
     "453.fa09307d.chunk.js.map": "/Aspire-Project/static/js/453.fa09307d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.93065f12.css",
+<<<<<<< HEAD
     "static/js/main.c9e1f45b.js"
+=======
+    "static/js/main.8dd83cea.js"
+>>>>>>> e9446e2fee3c8a82235c799c66980863f78aeda3
   ]
 }
