@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Aspire-Project/static/css/main.93065f12.css",
+    "main.js": "/Aspire-Project/static/js/main.c9e1f45b.js",
+    "static/js/453.fa09307d.chunk.js": "/Aspire-Project/static/js/453.fa09307d.chunk.js",
+    "index.html": "/Aspire-Project/index.html",
+    "main.93065f12.css.map": "/Aspire-Project/static/css/main.93065f12.css.map",
+    "main.c9e1f45b.js.map": "/Aspire-Project/static/js/main.c9e1f45b.js.map",
+    "453.fa09307d.chunk.js.map": "/Aspire-Project/static/js/453.fa09307d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.93065f12.css",
+    "static/js/main.c9e1f45b.js"
+  ]
+}
