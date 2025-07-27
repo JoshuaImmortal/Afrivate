@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Button from '../../components/common/Button';
+import { useNavigate } from 'react-router-dom';
 import OTPInput from '../../components/auth/OTPInput';
 
 const VerifyOTP = () => {
   const navigate = useNavigate();
-  const [error, setError] = useState('');
+  // const [error, setError] = useState('');
   const [isResending, setIsResending] = useState(false);
 
   const handleOTPComplete = (otp) => {
