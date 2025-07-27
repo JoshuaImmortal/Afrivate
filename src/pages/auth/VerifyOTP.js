@@ -4,7 +4,7 @@ import OTPInput from '../../components/auth/OTPInput';
 
 const VerifyOTP = () => {
   const navigate = useNavigate();
-  // const [error, setError] = useState('');
+  const [error, setError] = useState('');
   const [isResending, setIsResending] = useState(false);
 
   const handleOTPComplete = (otp) => {
@@ -14,6 +14,7 @@ const VerifyOTP = () => {
   };
 
   const handleResend = async () => {
+    setError("");
     setIsResending(true);
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
