@@ -88,6 +88,8 @@ const KYCForm = () => {
         if (!formData.accountNumber) newErrors.accountNumber = 'Account number is required';
         if (!formData.bvn) newErrors.bvn = 'BVN is required';
         break;
+      default: // The default case
+        return null; // Or a fallback component
     }
     
     setErrors(newErrors);
