@@ -1,207 +1,290 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Input from '../../components/common/Input';
-import Button from '../../components/common/Button';
-import SocialButton from '../../components/common/SocialButton';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    userType: '',
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    rememberMe: false
+    userType: "",
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    rememberMe: false,
   });
   const [errors, setErrors] = useState({});
 
+  // Handle input change
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     }));
     if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
+      setErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
 
-  const handleUserTypeSelect = (type) => {
-    setFormData(prev => ({ ...prev, userType: type }));
-    setStep(2);
-  };
-
-  const validateForm = () => {
+  // Step 1 validation (username + email)
+  const validateStep1 = () => {
     const newErrors = {};
-    if (!formData.username) newErrors.username = 'Username is required';
+    // Username checks
+    if (!formData.username) {
+      newErrors.username = "Username is required";
+    } else if (formData.username.length < 3) {
+      newErrors.username = "Username must be at least 3 characters";
+    } else if (!/^[a-zA-Z0-9_]+$/.test(formData.username)) {
+      newErrors.username =
+        "Username can only contain letters, numbers, and underscores";
+    }
+
+    // Email checks
     if (!formData.email) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
+      newErrors.email = "Email is invalid";
+    } else if (formData.email.length > 50) {
+      newErrors.email = "Email must be less than 50 characters";
     }
-    if (!formData.password) {
-      newErrors.password = 'Password is required';
-    } else if (formData.password.length < 8) {
-      newErrors.password = 'Password must be at least 8 characters';
-    }
-    if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match';
-    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  // Step 2 validation (passwords + role)
+  const validateStep2 = () => {
+    const newErrors = {};
+    // Role check
+    if (!formData.userType) newErrors.userType = "Please select a role";
+
+    // Password checks
+    if (!formData.password) {
+      newErrors.password = "Password is required";
+    } else if (formData.password.length < 8) {
+      newErrors.password = "Password must be at least 8 characters";
+    } else if (!/[A-Z]/.test(formData.password)) {
+      newErrors.password = "Password must contain at least one uppercase letter";
+    } else if (!/[a-z]/.test(formData.password)) {
+      newErrors.password = "Password must contain at least one lowercase letter";
+    } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(formData.password)) {
+      newErrors.password = "Password must contain at least one special character";
+    }
+
+    // Confirm password
+    if (!formData.confirmPassword) {
+      newErrors.confirmPassword = "Please confirm your password";
+    } else if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = "Passwords do not match";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // Step navigation
+  const handleProceed = () => {
+    if (validateStep1()) {
+      setStep(2);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      console.log('Sign up:', formData);
+    if (validateStep2()) {
+      console.log("✅ Sign up success:", formData);
       navigate('/kyc');
     }
   };
 
-  const handleSocialSignUp = (provider) => {
-    console.log(`Sign up with ${provider}`);
-    // Handle social sign up
-  };
-
+  // ===================== UI =====================
   if (step === 1) {
     return (
-      <div className="min-h-screen flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <h1 className="text-3xl font-bold text-center text-purple-900 mb-2">
+      <div className="min-h-screen flex flex-col justify-center px-6 py-10 sm:px-8 lg:px-10">
+        <div className="max-w-md w-full mx-auto bg-white p-8 rounded-lg shadow">
+          <h1 className="text-2xl font-bold text-center text-[#012B52] mb-8">
             SIGN UP
           </h1>
-        </div>
 
-        <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <div className="space-y-6">
-              <button
-                onClick={() => handleUserTypeSelect('freelancer')}
-                className="w-full p-4 border-2 border-purple-600 rounded-lg hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
-              >
-                <div className="flex items-center justify-center space-x-2">
-                  <span className="text-2xl">👨‍💻</span>
-                  <span className="text-purple-600 font-medium">AS FREELANCER</span>
-                </div>
-              </button>
+          {/* Input Fields */}
+          <div className="space-y-4">
+            <div>
+              <input
+                type="text"
+                name="username"
+                placeholder="USERNAME"
+                value={formData.username}
+                onChange={handleChange}
+                className="w-full py-3 px-4 rounded-lg bg-gray-100 placeholder-gray-400 text-sm outline-none"
+              />
+              {errors.username && (
+                <p className="text-red-500 text-xs mt-1">{errors.username}</p>
+              )}
+            </div>
 
-              <button
-                onClick={() => handleUserTypeSelect('employer')}
-                className="w-full p-4 border-2 border-purple-600 rounded-lg hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
-              >
-                <div className="flex items-center justify-center space-x-2">
-                  <span className="text-2xl">🏢</span>
-                  <span className="text-purple-600 font-medium">AS EMPLOYER</span>
-                </div>
-              </button>
+            <div>
+              <input
+                type="email"
+                name="email"
+                placeholder="USER EMAIL"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full py-3 px-4 rounded-lg bg-gray-100 placeholder-gray-400 text-sm outline-none"
+              />
+              {errors.email && (
+                <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+              )}
             </div>
           </div>
+
+          {/* Proceed Button */}
+          <button
+            onClick={handleProceed}
+            className="w-full mt-6 py-3 rounded-full text-white font-bold text-sm bg-gradient-to-r from-blue-900 to-blue-400"
+          >
+            Proceed
+          </button>
+
+          <div className="flex items-center my-6">
+        <div className="flex-grow h-px bg-gray-300"></div>
+        <span className="mx-4 text-gray-500 text-sm">Or</span>
+        <div className="flex-grow h-px bg-gray-300"></div>
+      </div>
+
+      {/* Social Buttons */}
+      <div className="flex justify-center gap-6">
+  <button className="border rounded-md p-1 w-[20%]">
+    <i className="fab fa-google text-lg text-[#EA4335]"></i>
+  </button>
+  <button className="bg-[#1877F2] rounded-md p-1 w-[20%]">
+    <i className="fab fa-facebook-f text-white text-lg"></i>
+  </button>
+  <button className="bg-[#1DA1F2] rounded-md p-1 w-[20%]">
+    <i className="fab fa-twitter text-white text-lg"></i>
+  </button>
+</div>
+
+
+      {/* Login Text */}
+      <Link to="/login">
+ <p className="mt-10 text-sm text-black text-center">
+        Already have an account? <span className="text-[#012B52] font-semibold"> Log in </span>
+      </p>
+      </Link>
+    
+          
         </div>
       </div>
     );
   }
 
+  // STEP 2
   return (
-    <div className="min-h-screen flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h1 className="text-3xl font-bold text-center text-purple-900 mb-2">
+    <div className="min-h-screen flex flex-col justify-center px-6 py-10 sm:px-8 lg:px-10">
+      <div className="max-w-md w-full mx-auto bg-white p-8 rounded-lg shadow">
+        <h1 className="text-2xl font-bold text-center text-[#002060] mb-6">
           SIGN UP
         </h1>
-        <p className="text-center text-gray-600 mb-8">
-          Create your {formData.userType} account
-        </p>
-      </div>
 
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <Input
-              name="username"
-              placeholder="Username"
-              value={formData.username}
-              onChange={handleChange}
-              error={errors.username}
-            />
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Role Selection */}
+          <div className="space-y-4">
+            <button
+              type="button"
+              onClick={() =>
+                setFormData((prev) => ({ ...prev, userType: "freelancer" }))
+              }
+              className={`w-[80%] ml-[10%] border-2 py-4 rounded-lg flex flex-col items-center font-semibold ${
+                formData.userType === "freelancer"
+                  ? "bg-purple-100 border-purple-600 text-purple-700"
+                  : "border-[#002060] text-[#002060]"
+              }`}
+            >
+              <i className="fas fa-user-circle text-3xl mb-1"></i>
+              AS FREELANCER
+            </button>
+            <button
+              type="button"
+              onClick={() =>
+                setFormData((prev) => ({ ...prev, userType: "employer" }))
+              }
+              className={`w-[80%] ml-[10%] border-2 py-4 rounded-lg flex flex-col items-center font-semibold ${
+                formData.userType === "employer"
+                  ? "bg-purple-100 border-purple-600 text-purple-700"
+                  : "border-[#002060] text-[#002060]"
+              }`}
+            >
+              <i className="fas fa-user text-2xl mb-1"></i>
+              AS EMPLOYER
+            </button>
+            {errors.userType && (
+              <p className="text-red-500 text-xs mt-1 text-center">
+                {errors.userType}
+              </p>
+            )}
+          </div>
 
-            <Input
-              name="email"
-              type="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleChange}
-              error={errors.email}
-            />
-
-            <Input
-              name="password"
-              type="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-              error={errors.password}
-            />
-
-            <Input
-              name="confirmPassword"
-              type="password"
-              placeholder="Repeat Password"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              error={errors.confirmPassword}
-            />
-
-            <div className="flex items-center">
+          {/* Password Fields */}
+          <div className="space-y-4">
+            <div>
               <input
-                id="rememberMe"
-                name="rememberMe"
-                type="checkbox"
-                checked={formData.rememberMe}
+                type="password"
+                name="password"
+                placeholder="PASSWORD"
+                value={formData.password}
                 onChange={handleChange}
-                className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"
+                className="w-full bg-gray-200 text-sm px-4 py-3 rounded-lg placeholder-gray-500 outline-none"
               />
-              <label htmlFor="rememberMe" className="ml-2 block text-sm text-gray-900">
-                Remember me
-              </label>
+              {errors.password && (
+                <p className="text-red-500 text-xs mt-1">{errors.password}</p>
+              )}
             </div>
 
-            <Button type="submit">
-              Sign Up
-            </Button>
-          </form>
-
-          <div className="mt-6">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300" />
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">Or</span>
-              </div>
-            </div>
-
-            <div className="mt-6 flex justify-center space-x-4">
-              <SocialButton provider="google" onClick={() => handleSocialSignUp('google')} />
-              <SocialButton provider="facebook" onClick={() => handleSocialSignUp('facebook')} />
-              <SocialButton provider="twitter" onClick={() => handleSocialSignUp('twitter')} />
+            <div>
+              <input
+                type="password"
+                name="confirmPassword"
+                placeholder="REPEAT PASSWORD"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                className="w-full bg-gray-200 text-sm px-4 py-3 rounded-lg placeholder-gray-500 outline-none"
+              />
+              {errors.confirmPassword && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.confirmPassword}
+                </p>
+              )}
             </div>
           </div>
 
-          <p className="mt-8 text-center text-sm text-gray-600">
-            Already have an account?{' '}
-            <Link
-              to="/login"
-              className="font-medium text-purple-600 hover:text-purple-500"
-            >
-              Log in
-            </Link>
-          </p>
-        </div>
+          {/* Remember Me */}
+          <div className="flex items-center justify-between text-xs mb-2">
+            <label className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                name="rememberMe"
+                checked={formData.rememberMe}
+                onChange={handleChange}
+                className="accent-[#002060] w-4 h-4"
+              />
+              <span className="text-[#002060]">Remember me</span>
+            </label>
+            <a href="#" className="text-[#002060] font-semibold">
+              Forget Password?
+            </a>
+          </div>
+
+          {/* Submit */}
+          <button
+            type="submit"
+            className="w-full bg-gradient-to-r from-[#002060] to-[#4A90E2] text-white font-bold py-3 rounded-full"
+          >
+            Sign Up
+          </button>
+        </form>
       </div>
     </div>
   );
 };
 
-export default SignUp; 
+export default SignUp;

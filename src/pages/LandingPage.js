@@ -1,67 +1,193 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import { Link } from 'react-router-dom';
+import topimg from "../Assets/topimage2.png";
+import logo from "../Assets/Vector.png";
+import dimg from "../Assets/Layer_x0020_1 (1).png"
+import main2 from "../Assets/main.png"
+import apple from "../Assets/Group 216 (1).png"
+import play from "../Assets/Group 217 (1).png"
+import menu from "../Assets/iconamoon_menu-burger-horizontal-bold.png"
+
+
+
+
+
+
+
+
 
 const LandingPage = () => {
+
+  const [isOpen, setIsOpen] = useState(false);
+
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 bg-white z-50 px-8 py-4 shadow-sm">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center">
-            <img src="/logo-icon.svg" alt="AfriVate Logo" className="h-10 w-10" />
+        <div className="max-w-7xl mx-auto flex  items-center">
+        <img src={menu} alt="menu button" className="flex ml-[-3%] lg:ml-[2%] py-2  md:w-[7%] lg:w-[2.4%] w-[10%]  cursor-pointer"  onClick={() => setIsOpen(true)}/>
+          <div className="flex  px-0 ml-[28%] lg:ml-[3%]">
+            <img src={logo} alt="AfriVate Logo" className="h-10 w-10 px-0" />
           </div>
-          <div className="flex items-center space-x-4">
-            <Link to="/login" className="text-purple-600 hover:text-purple-700 px-4 py-2">Sign In</Link>
-            <Link to="/signup" className="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700">
+          <div className="flex items-center space-x-4 ml-auto">
+          
+                      <Link 
+              to="/login" 
+              className="hidden lg:inline-block text-purple-900 hover:text-purple-700 px-4 py-2"
+            >
+              About Aspire
+            </Link>  
+
+            <Link 
+              to="/login" 
+              className="hidden lg:inline-block text-purple-900 hover:text-purple-700 px-4 py-2"
+            >
+              Blog
+            </Link>
+
+            <Link 
+              to="/login" 
+              className="hidden lg:inline-block text-purple-900 hover:text-purple-700 px-4 py-2"
+            >
+              Sign In
+            </Link>
+
+            <Link to="/signup" className="bg-gradient-to-r from-purple-900 to-purple-300 text-white px-6 py-2 rounded-full  hover:bg-purple-800">
               Sign Up
             </Link>
           </div>
         </div>
       </nav>
 
+
+
+
+
+ {/* Sidebar Menu */}
+ <div
+        className={`fixed top-0 left-0 h-full w-[270px] rounded-tr-3xl rounded-br-3xl bg-gray-400 shadow-2xl z-50 transform transition-transform duration-300 ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="">
+          <div className="flex px-3 py-5">
+          <div className="flex w-[50px] h-[50px] bg-gray-100 rounded-full">
+
+          </div >
+          <p className="flex text-sm text-purple-900 mt-[15px] font-extrabold">
+            Welcome,  <span className="text-white text-2xl font-bold mt-[-7px]"> Joshua</span>
+          </p>
+          </div>
+
+          <div className=" opacity-100 bg-gray-200 mr-[5%]">
+          <ul className="p-3 space-y-5 text-sm bg-gray-200 text-purple-900 font-extrabold">
+            <li><Link to="#">Find Freelancers</Link></li>
+            <li><Link to="#">Find a Job</Link></li>
+            <li><Link to="#">How it Works</Link></li>
+            <li><Link to="#">About Aspire</Link></li>
+            <li><Link to="#">Why Aspire</Link></li>
+            <li><Link to="#">Pricing</Link></li>
+            <li><Link to="#">Blog</Link></li>
+            <li><Link to="#">Enterprise Solutions</Link></li>
+            <li><Link to="#">Agency Solutions</Link></li>
+            <li><Link to="#">Purchase Order Solutions</Link></li>
+            <li><Link to="#">Work Agreements</Link></li>
+            <li><Link to="#">DeepPay</Link></li>
+          </ul>
+          </div>
+        </div>
+        <Link to="/login">
+        <div className=" w-[95%] bg-purple-900 mt-[20px] text-white text-sm font-extrabold py-2  rounded-tr-full rounded-br-full px-3">
+            Log in        
+        </div>
+        </Link>
+      </div>
+
+      {/* Overlay (click to close) */}
+      {isOpen && (
+        <div
+          className="fixed inset-0  bg-opacity-50 z-40"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
+
+
+
+
+
+
+     
+
+
+
+
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-purple-50 via-white to-purple-50">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-5xl font-bold mb-6">
-                GROWING<br />
-                THE <span className="text-purple-600">AFRICAN DREAM</span>
-              </h1>
-              <p className="text-xl text-gray-600 mb-8 max-w-lg">
-                Connect with top companies and build your freelancing career on Africa's leading professional marketplace.
-              </p>
-              <div className="flex space-x-4">
-                <Link to="/signup" className="bg-purple-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-purple-700 transition-all">
-                  Get Started
-                </Link>
-              </div>
+<section className="pt-32 pb-20 bg-gradient-to-br from-purple-50 via-white to-purple-50">
+  <div className="max-w-7xl mx-auto px-0">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="relative">
+        {/* Background Image Placeholder */}
+        <div className="absolute inset-0">
+          <img 
+            src={topimg} 
+            alt="African Dream" 
+            className="w-full h-full object-cover rounded-xl opacity-30" 
+          />
+        </div>
+
+        {/* Text Content (above image) */}
+        <div className="relative p-[20px] z-10">
+          <h1 className="text-5xl font-bold mb-6">
+            GROWING<br />
+            THE <span className="text-purple-900">AFRICAN DREAM</span>
+          </h1>
+          <p className="text-xl text-gray-600 mb-8 max-w-lg">
+            Connect with top companies and build your freelancing career on Africa's leading professional marketplace.
+          </p>
+          <div className="flex space-x-4">
+            <Link 
+              to="/signup" 
+              className="bg-gradient-to-r from-purple-900 to-blue-300 text-white px-8 py-4 rounded-full font-medium hover:bg-purple-700 transition-all"
+            >
+              Get Started
+            </Link>
+          </div>
+        </div>
+      </div>
+      
+      <div className="hidden lg:block">
+        <div className="bg-purple-600 bg-opacity-10 rounded-2xl p-12">
+          <div className="grid grid-cols-2 gap-6">
+            <div className="bg-white p-6 rounded-3xl shadow-sm">
+              <h3 className="text-2xl font-bold text-purple-900">10K+</h3>
+              <p className="text-gray-600">Active Freelancers</p>
             </div>
-            <div className="hidden lg:block">
-              <div className="bg-purple-600 bg-opacity-10 rounded-2xl p-12">
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="bg-white p-6 rounded-xl shadow-sm">
-                    <h3 className="text-2xl font-bold text-purple-600">10K+</h3>
-                    <p className="text-gray-600">Active Freelancers</p>
-                  </div>
-                  <div className="bg-white p-6 rounded-xl shadow-sm">
-                    <h3 className="text-2xl font-bold text-purple-600">5K+</h3>
-                    <p className="text-gray-600">Companies</p>
-                  </div>
-                  <div className="bg-white p-6 rounded-xl shadow-sm">
-                    <h3 className="text-2xl font-bold text-purple-600">$2M+</h3>
-                    <p className="text-gray-600">Paid Out</p>
-                  </div>
-                  <div className="bg-white p-6 rounded-xl shadow-sm">
-                    <h3 className="text-2xl font-bold text-purple-600">95%</h3>
-                    <p className="text-gray-600">Success Rate</p>
-                  </div>
-                </div>
-              </div>
+            <div className="bg-white p-6 rounded-3xl shadow-sm">
+              <h3 className="text-2xl font-bold text-purple-900">5K+</h3>
+              <p className="text-gray-600">Companies</p>
+            </div>
+            <div className="bg-white p-6 rounded-3xl shadow-sm">
+              <h3 className="text-2xl font-bold text-purple-900">$2M+</h3>
+              <p className="text-gray-600">Paid Out</p>
+            </div>
+            <div className="bg-white p-6 rounded-3xl shadow-sm">
+              <h3 className="text-2xl font-bold text-purple-900">95%</h3>
+              <p className="text-gray-600">Success Rate</p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
 
       {/* Features Section */}
       <section className="py-20">
@@ -105,9 +231,11 @@ const LandingPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20">
+      <section className=" relative py-20 mt-[0px]">
         <div className="max-w-7xl mx-auto px-8">
-          <div className="bg-purple-600 rounded-2xl py-16 px-8 text-center text-white">
+        <img src={dimg} alt="down image" className=" lg:ml-[30%] md:ml-[30%] lg:w-[40%] sm:w-[50%]  " />
+          <div className="relative bg-purple-900 rounded-2xl py-16 px-8 text-center text-white">
+          
             <h2 className="text-3xl font-bold mb-4">Ready to Start Your Journey?</h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto">
               Join thousands of African professionals building successful careers through our platform.
@@ -118,9 +246,30 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+        
+      <section className=" relative lg:hidden bg-gradient-to-br from-purple-50 via-white to-purple-50 mt-[0px]">
+      <div className=" relative  w-full mt-[65px] h-[325px] pt-[25px]">
+    <img src={main2} alt="Hero" className="absolute w-[47%] left-[3%]"
+        />
+        <p className="absolute text-lg font-montserrat text-blue-900 text-right left-[56%]">
+          Start a Growing <br />Career <br /> <span className="text-1xl font-montserrat text-blue-500 text-right font-bold">With Us!</span>
+        </p>
+
+        <img
+          src={apple}
+          alt="Hero"
+          className="absolute w-[40%] left-[56%] top-[115px]"
+        />
+         <img
+          src={play}
+          alt="Hero"
+          className="absolute w-[40%] left-[56%] top-[190px]"
+        />
+        </div>
+      </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
+      <footer className="relative bg-gray-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
             <div>
@@ -186,4 +335,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage; 
+export default LandingPage;
