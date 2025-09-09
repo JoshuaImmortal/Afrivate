@@ -1,15 +1,18 @@
 {
   "files": {
-    "main.css": "/Aspire-Project/static/css/main.a5f30279.css",
-    "main.js": "/Aspire-Project/static/js/main.25be2914.js",
+    "main.css": "/Aspire-Project/static/css/main.340e6f0e.css",
+    "main.js": "/Aspire-Project/static/js/main.e2485725.js",
     "static/js/453.8910648d.chunk.js": "/Aspire-Project/static/js/453.8910648d.chunk.js",
+    "static/media/topimage2.png": "/Aspire-Project/static/media/topimage2.a3266e8395f46ddf2485.png",
+    "static/media/main.png": "/Aspire-Project/static/media/main.7749dd1b301dffd1527c.png",
+    "static/media/Layer_x0020_1 (1).png": "/Aspire-Project/static/media/Layer_x0020_1 (1).f05b358fbe1d89be7299.png",
     "index.html": "/Aspire-Project/index.html",
-    "main.a5f30279.css.map": "/Aspire-Project/static/css/main.a5f30279.css.map",
-    "main.25be2914.js.map": "/Aspire-Project/static/js/main.25be2914.js.map",
+    "main.340e6f0e.css.map": "/Aspire-Project/static/css/main.340e6f0e.css.map",
+    "main.e2485725.js.map": "/Aspire-Project/static/js/main.e2485725.js.map",
     "453.8910648d.chunk.js.map": "/Aspire-Project/static/js/453.8910648d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a5f30279.css",
-    "static/js/main.25be2914.js"
+    "static/css/main.340e6f0e.css",
+    "static/js/main.e2485725.js"
   ]
 }
