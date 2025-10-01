@@ -1,0 +1,168 @@
+/* Tailwind is loaded via CDN in index.html for now */
+
+/* Hero background: deep purple radial gradient + noise + dots */
+:root {
+  --af-primary: #0067FF;
+}
+
+.hero-bg {
+  background: radial-gradient(1200px 600px at 50% -10%, rgba(168,85,247,0.55) 0%, rgba(88,28,135,0.35) 35%, rgba(24,0,45,0.9) 70%),
+              radial-gradient(800px 400px at 20% 20%, rgba(124,58,237,0.55) 0%, rgba(24,0,45,0.0) 60%),
+              radial-gradient(900px 500px at 80% 15%, rgba(236,72,153,0.35) 0%, rgba(24,0,45,0.0) 60%),
+              #140021;
+}
+
+.hero-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.hero-top-glow {
+  background: radial-gradient(circle at top center, rgba(146, 0, 255, 0.3), transparent 50%);
+}
+
+/* Soft vignette on edges for depth */
+.hero-vignette {
+  background: radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+.text-glow-white {
+  text-shadow: 0 6px 18px rgba(255,255,255,0.25), 0 1px 0 rgba(255,255,255,0.4);
+}
+
+.btn-glow {
+  box-shadow: 0 14px 50px -12px rgba(217,70,239,0.7), 0 2px 0 rgba(255,255,255,0.2) inset;
+  transition: box-shadow .25s ease;
+}
+.btn-glow:hover {
+  box-shadow: 0 18px 60px -10px rgba(217,70,239,0.85), 0 2px 0 rgba(255,255,255,0.25) inset;
+}
+
+/* Sticky glassy navbar styling */
+.navbar-bg {
+  background: rgba(20, 0, 33, 0.42);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: saturate(160%) blur(14px);
+}
+.nav-link {
+  color: rgba(255,255,255,0.88);
+}
+.nav-link:hover {
+  color: #ffffff;
+}
+.login-btn {
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+/* Button system to match screenshot */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  transition: all .25s ease;
+}
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.0625rem;
+}
+.btn-md {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9375rem;
+}
+
+/* Screenshot-like purple gradient CTA */
+.btn-primary {
+  color: #fff;
+  background-image: linear-gradient(135deg, #ec4899 0%, #b367ff 45%, #7c3aed 100%);
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow:
+    0 18px 50px -12px rgba(124,58,237,0.7),
+    0 2px 0 rgba(255,255,255,0.22) inset,
+    0 0 0 1px rgba(255,255,255,0.06) inset;
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 22px 60px -12px rgba(124,58,237,0.85),
+    0 2px 0 rgba(255,255,255,0.25) inset,
+    0 0 0 1px rgba(255,255,255,0.08) inset;
+}
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow:
+    0 14px 40px -12px rgba(124,58,237,0.65),
+    0 1px 0 rgba(255,255,255,0.18) inset;
+}
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(255,255,255,0.6),
+    0 0 0 6px rgba(124,58,237,0.55),
+    0 18px 50px -12px rgba(124,58,237,0.7);
+}
+
+/* Variant with user's preferred blue primary – easy switch */
+.btn-primary-blue {
+  color: #fff;
+  background-image: linear-gradient(135deg, #3aa0ff 0%, #0b7cff 45%, #0067FF 100%);
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow:
+    0 18px 50px -12px rgba(0,103,255,0.6),
+    0 2px 0 rgba(255,255,255,0.22) inset,
+    0 0 0 1px rgba(255,255,255,0.06) inset;
+}
+.btn-primary-blue:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 22px 60px -12px rgba(0,103,255,0.75),
+    0 2px 0 rgba(255,255,255,0.25) inset,
+    0 0 0 1px rgba(255,255,255,0.08) inset;
+}
+.btn-primary-blue:active {
+  transform: translateY(0);
+  box-shadow:
+    0 14px 40px -12px rgba(0,103,255,0.55),
+    0 1px 0 rgba(255,255,255,0.18) inset;
+}
+.btn-primary-blue:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(255,255,255,0.6),
+    0 0 0 6px rgba(0,103,255,0.55),
+    0 18px 50px -12px rgba(0,103,255,0.6);
+}
+
+/* Glassy/outline button for navbar */
+.btn-glass {
+  color: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.35);
+  backdrop-filter: blur(8px) saturate(140%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.22);
+}
+.btn-glass:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.5);
+}
+.btn-glass:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(255,255,255,0.5),
+    0 0 0 6px rgba(255,255,255,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.22);
+}
+
+/* System font stack + smoothing for a premium feel */
+html, body, #root { height: 100%; }
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0b0014;
+}
