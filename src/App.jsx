@@ -4,20 +4,16 @@ import logoImg from './assets/img/Vector.png'
 function App() {
   return (
     <div className="relative min-h-screen text-white overflow-hidden hero-bg flex flex-col">
-      {/* Background video with blend mode */}
+      {/* Background video (no overlays) */}
       <video
-        className="absolute inset-0 w-full h-full object-cover mix-blend-soft-light opacity-90"
+        className="absolute inset-0 w-full h-full object-cover"
         src={bgVideo}
         autoPlay
         loop
         muted
         playsInline
       />
-      {/* Overlays for readability */}
-      <div className="absolute inset-0 bg-[#1a0130]/55" aria-hidden="true" />
-      <div className="absolute inset-0 hero-dots" aria-hidden="true" />
-      <div className="hero-top-glow" aria-hidden="true" />
-      <div className="hero-vignette" aria-hidden="true" />
+      {/* overlays removed to reveal full video */}
       
       {/* Navigation */}
       <nav className="navbar-bg sticky top-0 z-20 px-4 sm:px-6 md:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
@@ -31,7 +27,7 @@ function App() {
           <a href="#" className="nav-link text-base sm:text-lg font-medium transition-all duration-200 hover:tracking-wide">Courses</a>
           <a href="#" className="nav-link text-base sm:text-lg font-medium transition-all duration-200 hover:tracking-wide">Employers</a>
           <a href="#" className="nav-link text-base sm:text-lg font-medium transition-all duration-200 hover:tracking-wide">About Us</a>
-          <button className="login-btn px-6 sm:px-8 py-2 sm:py-2.5 rounded-lg text-base sm:text-lg font-medium transition-all duration-300 hover:bg-white/10 hover:border-white/50">
+          <button className="btn btn-md btn-glass">
             Login
           </button>
         </div>
@@ -46,7 +42,7 @@ function App() {
           <p className="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 text-gray-100/90 max-w-3xl mx-auto px-4 leading-relaxed tracking-wide">
             Afrivate is a smart web platform that connects youths with businesses, NGOs, and organizations for jobs, volunteering and professional growth.
           </p>
-          <button className="btn-glow bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-500 px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-lg text-base sm:text-lg md:text-xl font-semibold transition-all duration-300 transform hover:scale-[1.02] hover:rotate-[-0.5deg] active:scale-[0.98]">
+          <button className="btn btn-lg btn-primary">
             Find your next Opportunity
           </button>
         </div>
